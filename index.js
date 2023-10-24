@@ -6,9 +6,13 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000',
+optionsSuccessStatus: 200 }));
 app.use(express.json());
 
+app.get("/", ()=>{
+  res.send({msg: 'welcome to app', issue: false});
+})
 app.post("/textgenerate", async (req, res)=>{
     const {query} = req.body;
     try {
