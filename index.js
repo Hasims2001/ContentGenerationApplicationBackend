@@ -13,6 +13,8 @@ app.use(express.json());
 app.get("/", ()=>{
   res.send({msg: 'welcome to app', issue: false});
 })
+
+
 app.post("/textgenerate", async (req, res)=>{
     const {query} = req.body;
     try {
